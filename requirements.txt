@@ -1,4 +1,4 @@
-aiohttp==3.10.5
+aiohttp==3.13.3
 autocorrect==2.6.1
 av==13.0.0
 colorama==0.4.6
