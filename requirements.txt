@@ -10,7 +10,7 @@ omegaconf==2.3.0
 opencv_python==4.10.0.84
 opencv_python_headless==4.10.0.84
 pandas==2.2.3
-Pillow==11.1.0
+Pillow==12.1.1
 pytesseract==0.3.13
 python-dotenv==1.0.1
 python_Levenshtein==0.26.1
