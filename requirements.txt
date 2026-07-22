@@ -1,4 +1,5 @@
-aiohttp==3.13.3
+accelerate==1.14.0
+aiohttp==3.14.1
 autocorrect==2.6.1
 av==13.0.0
 colorama==0.4.6
@@ -10,14 +11,15 @@ omegaconf==2.3.0
 opencv_python==4.10.0.84
 opencv_python_headless==4.10.0.84
 pandas==2.2.3
-Pillow==12.2.0
+Pillow==12.3.0
 pytesseract==0.3.13
-python-dotenv==1.0.1
+python-dotenv==1.2.2
 python_Levenshtein==0.26.1
 scikit_learn==1.6.1
 scikit-image==0.24.0
-torch==2.6.0
+torch==2.13.0
 torchmetrics==1.4.2
-tqdm==4.65.2
-transformers==4.49.0
+torchvision==0.28.0
+tqdm==4.67.1
+transformers==5.14.1
 wandb==0.19.7

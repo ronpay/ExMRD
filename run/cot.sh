@@ -1,13 +1,15 @@
 #!/bin/bash
 
+DATASET=${1:-FakeSV}
+
 # Run textual refining
-python preprocess/run_textual_refining.py
+python preprocess/cot/run_textual_refining.py --data $DATASET
 
 # Run visual refining
-python preprocess/run_visual_refining.py
+python preprocess/cot/run_visual_refining.py --data $DATASET
 
 # Run retrieving
-python preprocess/run_retrieving.py
+python preprocess/cot/run_retrieving.py --data $DATASET
 
 # Run reasoning
-python preprocess/run_reasoning.py
+python preprocess/cot/run_reasoning.py --data $DATASET

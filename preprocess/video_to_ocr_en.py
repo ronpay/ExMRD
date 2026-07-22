@@ -122,7 +122,11 @@ datasets = ['FVC']
 for dataset in datasets:
     src_dir = f'data/{dataset}/videos'
     dst_file = f'data/{dataset}/ocr.jsonl'
-    
+
+    if not os.path.exists(src_dir):
+        print(f"Skipping {dataset}: {src_dir} not found")
+        continue
+
     # Load existing data if available
     if os.path.exists(dst_file):
         dst_df = pd.read_json(dst_file, lines=True)

@@ -75,7 +75,7 @@ def process_dataset(dataset_name):
     configs = {
         "FakeSV": {
             "src_file": f"data/{dataset_name}/data.jsonl",
-            "output_dir": f"data/{dataset_name}",
+            "output_dir": f"data/{dataset_name}/fea",
             "video_dir": f"data/{dataset_name}/videos",
             "model_id": "OFA-Sys/chinese-clip-vit-large-patch14",
             "use_chinese_clip": True,
@@ -83,7 +83,7 @@ def process_dataset(dataset_name):
         },
         "FakeTT": {
             "src_file": f"data/{dataset_name}/data.jsonl",
-            "output_dir": f"data/{dataset_name}",
+            "output_dir": f"data/{dataset_name}/fea",
             "video_dir": f"data/{dataset_name}/videos",
             "model_id": "openai/clip-vit-large-patch14",
             "use_chinese_clip": False,
@@ -91,7 +91,7 @@ def process_dataset(dataset_name):
         },
         "FVC": {
             "src_file": f"data/{dataset_name}/data.jsonl",
-            "output_dir": f"data/{dataset_name}",
+            "output_dir": f"data/{dataset_name}/fea",
             "video_dir": f"data/{dataset_name}/videos",
             "model_id": "openai/clip-vit-large-patch14",
             "use_chinese_clip": False,
@@ -100,7 +100,11 @@ def process_dataset(dataset_name):
     }
     
     config = configs[dataset_name]
-    
+
+    if not os.path.exists(config["src_file"]) or not os.path.exists(config["video_dir"]):
+        print(f"Skipping {dataset_name}: {config['src_file']} or {config['video_dir']} not found")
+        return
+
     # Load appropriate model and processor based on dataset
     if config["use_chinese_clip"]:
         processor = ChineseCLIPImageProcessor.from_pretrained(config["model_id"])

@@ -86,7 +86,8 @@ Run the following commands:
 ```bash
 # setup .env.example, and make sure you have access to OpenAI API
 mv .env.example .env
-bash run/cot.sh
+# defaults to FakeSV; pass FakeTT or FVC to process another dataset
+bash run/cot.sh FakeSV
 ```
 
 ## Run

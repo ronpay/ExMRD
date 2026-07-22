@@ -27,7 +27,7 @@ if os.path.exists(save_path):
     save_df = pd.read_json(save_path, lines=True, dtype={'vid': str})
 else:
     save_df = pd.DataFrame(
-        columns=['vid', 'ret', 'label']
+        columns=['vid', 'text', 'label']
     )
 
 try:
@@ -65,7 +65,7 @@ class MyDataset(Dataset):
                 src_df = pd.read_json(src_file, lines=True, dtype={'vid': str})
 
         lm_text_refine_df = pd.read_json(f'data/{dataset}/CoT/{model_name}/lm_text_refine.jsonl', lines=True, dtype={'vid': str})
-        lm_vision_refine_df = pd.read_json(f'data/{dataset}/CoT/{model_name}/lm_vision_refine.jsonl', lines=True, dtype={'vid': str})
+        lm_vision_refine_df = pd.read_json(f'data/{dataset}/CoT/{model_name}/lm_visual_refine.jsonl', lines=True, dtype={'vid': str})
         label_df = pd.read_json(f'data/{dataset}/label.jsonl', lines=True, dtype={'vid': str, 'label': int})
 
         # select vid in label_df
@@ -115,7 +115,7 @@ for batch in tqdm(dataloader):
     for vid, label, output in zip(vids, labels, outputs):
         save_df = pd.concat([save_df, pd.DataFrame({
             'vid': [vid],
-            'ret': [output],
+            'text': [output],
             'label': [label]
         })])
     # save to jsonl

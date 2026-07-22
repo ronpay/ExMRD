@@ -74,6 +74,9 @@ def process_batch(batch, pipe):
 # Main processing function
 def process_dataset(dataset_name):
     src_file = f'data/{dataset_name}/data.jsonl'
+    if not os.path.exists(src_file):
+        print(f"Skipping {dataset_name}: {src_file} not found")
+        return
     src_df = pd.read_json(src_file, lines=True, dtype={'vid': str})
 
     dst_file = f'data/{dataset_name}/transcript.jsonl'

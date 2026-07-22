@@ -5,6 +5,10 @@ from PIL import Image
 from tqdm import tqdm
 
 def process_frames(input_folder, output_folder):
+    if not os.path.exists(input_folder):
+        print(f"Skipping: input folder does not exist: {input_folder}")
+        return
+
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 

@@ -27,7 +27,7 @@ if os.path.exists(save_path):
     save_df = pd.read_json(save_path, lines=True, dtype={'vid': str})
 else:
     save_df = pd.DataFrame(
-        columns=['vid', 'ret', 'label']
+        columns=['vid', 'text', 'label']
     )
 
 try:
@@ -114,7 +114,7 @@ for batch in tqdm(dataloader):
     for vid, label, output in zip(vids, labels, outputs):
         save_df = pd.concat([save_df, pd.DataFrame({
             'vid': [vid],
-            'ret': [output],
+            'text': [output],
             'label': [label]
         })])
     # save to jsonl

@@ -30,7 +30,7 @@ class ChatLLM():
         if images:
             for image in images:
                 content.append(
-                    {'type': 'image_url', 'image_url': f'data:image/jpeg;base64,{image}'}
+                    {'type': 'image_url', 'image_url': {'url': f'data:image/jpeg;base64,{image}'}}
                 )
         data = json.dumps({
             'messages': [{'role': 'user', 'content': content}],
@@ -68,8 +68,7 @@ class ChatLLM():
             return await asyncio.gather(*tasks)
 
     def chat_batch(self, requests: List[Dict]):
-        loop = asyncio.get_event_loop()
         with ThreadPoolExecutor() as executor:
-            future = executor.submit(lambda: loop.run_until_complete(self._async_chat_batch(requests)))
+            future = executor.submit(lambda: asyncio.run(self._async_chat_batch(requests)))
             return future.result()
     
