@@ -197,7 +197,6 @@ def main(cfg: DictConfig):
     logger.add(log_path / 'log.log', retention="10 days", level="DEBUG")
     logger.add(sys.stdout, level="INFO")
     logger.info(OmegaConf.to_yaml(cfg))
-    pd.set_option('future.no_silent_downcasting', True)
     colorama.init()
     set_seed(cfg.seed)
     # mp.set_sharing_strategy('file_system')
